@@ -3,9 +3,10 @@ margin: 0;
 padding: 0;
 height: 100%;
 background-color: #414040 !important;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-padding-top: 18px; 
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+padding-top: 18px;
 }
+
 
 .fade-in-on-scroll {
       opacity: 0;
@@ -17,8 +18,6 @@ padding-top: 18px;
       opacity: 1;
       transform: translateY(0);
     }
-
-
 
 
 /* navbar start*/
@@ -64,7 +63,24 @@ align-items: center;
 }
 
 
+.navbar-toggler-icon {
+  filter: invert(1);
+}
 
+
+ .profile-box {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 999;
+      min-width: 220px;
+      max-width: 300px;
+    }
 /*navbar end*/
 
 
@@ -91,7 +107,7 @@ left: 10px;
 
 /*login/signup*/
 .form-label {
-color: #ff0000;
+color: #ffffff;
 font-weight: bold;
 }
 
@@ -265,9 +281,18 @@ padding-left: 50vw;
 }
 
 .fixed-carousel-img {
-   height: 400px; /* Adjust as needed */
-  object-fit: cover; /* Ensures image fills container without distortion */
-  object-position: center; /* Centers the image */
+  width: 100%;
+  height: 400px;
+  object-fit: contain;       /* Show the whole image without cropping */
+  object-position: center;
+  background-color: #000;  
+}
+
+@media (min-width: 768px) {
+  .fixed-carousel-img {
+    object-fit: cover;       /* Crop to fill on larger screens */
+    height: 400px;
+  }
 }
 
 /*about me end*/
@@ -322,7 +347,7 @@ height: 300px;
 object-fit: cover;
 }
 .row{
-padding-top: 6em;
+ 
 background-color: #414040;
 }
 .overlay-card {
@@ -392,7 +417,8 @@ padding-left: 50vw;
 
 .bg-section-pc {
   height: 100vh;
-  background-size: cover;
+  max-width: 100%;
+  background-repeat: no-repeat;
   background-position: center;
   position: relative;
   color: rgb(0, 0, 0);
@@ -401,7 +427,7 @@ padding-left: 50vw;
   justify-content: center;
   text-align: center;
   padding: 4rem;
-  background-image: url("assests/pc-simulator-1024x576.jpg");
+  background-image: url('assests/5ef243f333262b761775d558aba4a864.png');
    filter: brightness(50%);
 }
 
@@ -419,4 +445,71 @@ padding-left: 50vw;
   background-image: url('assests/1.png');
    filter: brightness(50%);
 }
+/*home page*/
+
+ 
+
+    .hero-section img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      filter: brightness(0.6);
+    }
+
+    .text-overlay {
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      max-width: 800px;
+    }
+
+    .title {
+    font-size: 60px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #fff !important;
+    }
+
+    .text-overlay-desc {
+      font-size: 2rem;
+      margin-top: 1rem;
+      margin-left: 1.3rem;
+      padding-left: 4rem;
+      text-align: center;
+    }
+
+    
+
+    .overlay-card {
+      position: relative;
+      width: 100%;
+      border: none;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .overlay-card img.card-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .overlay-card:hover img.card-img {
+      transform: scale(1.05);
+    }
+
+    .overlay-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      text-align: center;
+    }
+
+
+
+
 
