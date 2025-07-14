@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Red Horse Login / Sign Up</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
@@ -30,32 +30,121 @@
   </div>
 </nav>
 
-<div class="container my-5 pt-5">
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">
-      <div class="card text-white overlay-card">
-        <a href="about-me.html" class="overlay-link">
-          <img src="assests\492027409_10077824102236493_5570171898887430150_n.jpg" class="card-img" alt="About Me" />
-          <div class="overlay-text">
-            <h5 class="overlay-title">About Me</h5>
-          </div>
-        </a>
-      </div>
-    </div>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow   " >
 
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">
-      <div class="card text-white overlay-card">
-        <a href="products_services.html" class="overlay-link">
-          <img src="assests\premium_photo-1678566111481-8e275550b700.png" class="card-img" alt="Products and Services" />
-          <div class="overlay-text">
-            <h5 class="overlay-title">Products & Services</h5>
+        <div class="card-body text-center">
+          <img src="assests\logo.png" class="logo mb-3" style="height: 80px;" alt="Red Horse Logo" />
+
+          <ul class="nav nav-tabs mb-3 justify-content-center" id="authTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab">Sign Up</button>
+            </li>
+          </ul>
+
+          <div class="tab-content text-start" id="authTabContent">
+            <!-- Login Tab -->
+            <div class="tab-pane fade show active" id="login" role="tabpanel">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+              </form>
+            </div>
+
+            <!-- Signup Tab -->
+            <div class="tab-pane fade" id="signup" role="tabpanel">
+              <form id="signupForm">
+                <div class="mb-3">
+                  <label for="signupName" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="signupName" placeholder="Your full name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="signupEmail" placeholder="Enter email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="signupPassword" placeholder="Create password" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Sign Up</button>
+              </form>
+            </div>
           </div>
-        </a>
+
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript to make forms functional -->
+<script>
+  // Handle Login
+ // Handle Login
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const loginEmail = document.getElementById('loginEmail').value.trim();
+  const loginPassword = document.getElementById('loginPassword').value.trim();
+
+  const storedEmail = localStorage.getItem('email');
+  const storedPassword = localStorage.getItem('password');
+
+  if (loginEmail === storedEmail && loginPassword === storedPassword) {
+    alert('✅ Login successful!');
+    window.location.href = 'index.html'; // 👈 Redirect to homepage
+  } else {
+    alert('❌ Invalid email or password.');
+  }
+});
+
+
+  // Handle Signup
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const password = document.getElementById('signupPassword').value.trim();
+    const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+    if (password !== confirmPassword) {
+      alert('❌ Passwords do not match.');
+      return;
+    }
+
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+
+    alert('✅ Signup successful! You can now log in.');
+
+    // Switch to login tab
+    const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
+    loginTab.show();
+  });
+</script>
+
 </body>
 </html>
