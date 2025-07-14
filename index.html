@@ -30,8 +30,8 @@
   </div>
 </nav>
 
-<div class="d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card shadow   " >
+   <div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow" >
 
         <div class="card-body text-center">
           <img src="assests\logo.png" class="logo mb-3" style="height: 80px;" alt="Red Horse Logo" />
@@ -95,54 +95,11 @@
   </div>
 </div>
 
+
  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- 
-<script>
- 
-document.getElementById('loginForm').addEventListener('submit', function (e) {
-  e.preventDefault();
 
-  const loginEmail = document.getElementById('loginEmail').value.trim();
-  const loginPassword = document.getElementById('loginPassword').value.trim();
-
-  const storedEmail = localStorage.getItem('email');
-  const storedPassword = localStorage.getItem('password');
-
-  if (loginEmail === storedEmail && loginPassword === storedPassword) {
-    alert('✅ Login successful!');
-    window.location.href = 'home.html'; 
-  } else {
-    alert('❌ Invalid email or password.');
-  }
-});
-
-
- 
-  document.getElementById('signupForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById('signupName').value.trim();
-    const email = document.getElementById('signupEmail').value.trim();
-    const password = document.getElementById('signupPassword').value.trim();
-    const confirmPassword = document.getElementById('confirmPassword').value.trim();
-
-    if (password !== confirmPassword) {
-      alert('❌ Passwords do not match.');
-      return;
-    }
-
-    localStorage.setItem('name', name);
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
-
-    alert('✅ Signup successful! You can now log in.');
-
-  
-    const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
-    loginTab.show();
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
